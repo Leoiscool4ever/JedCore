@@ -11,6 +11,8 @@ import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.util.DamageHandler;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -106,13 +108,12 @@ public class SpiritBeam extends AvatarAbility implements AddonAbility {
 			}
 
 			ParticleEffect.SPELL_WITCH.display(location, 1, 0f, 0f, 0f, 0f);
-			ParticleEffect.SPELL_WITCH.display(location, 1, (float) Math.random() / 3, (float) Math.random() / 3, (float) Math.random() / 3, 0f);
-			ParticleEffect.BLOCK_CRACK.display(location, 1,(float) Math.random() / 3, (float) Math.random() / 3, (float) Math.random() / 3, 0.1F, Material.NETHER_PORTAL.createBlockData());
+			ParticleEffect.SPELL_WITCH.display(location, 1, (float) FastMath.random() / 3, (float) FastMath.random() / 3, (float) FastMath.random() / 3, 0f);
+			ParticleEffect.BLOCK_CRACK.display(location, 1,(float) FastMath.random() / 3, (float) FastMath.random() / 3, (float) FastMath.random() / 3, 0.1F, Material.NETHER_PORTAL.createBlockData());
 			ParticleEffect.BLOCK_CRACK.display(location, 1, direction.getX(), direction.getY(), direction.getZ(), 0.1F, Material.NETHER_PORTAL.createBlockData());
 
 			for (Entity entity : GeneralMethods.getEntitiesAroundPoint(location, 2)) {
 				if (entity instanceof LivingEntity && entity.getEntityId() != player.getEntityId() && !(entity instanceof ArmorStand)) {
-					entity.setFireTicks(100);
 					DamageHandler.damageEntity(entity, damage, this);
 				}
 			}

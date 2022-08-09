@@ -15,6 +15,8 @@ import com.projectkorra.projectkorra.firebending.BlazeArc;
 import com.projectkorra.projectkorra.util.DamageHandler;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
@@ -122,8 +124,8 @@ public class ESFire extends AvatarAbility implements AddonAbility {
 			}
 
 			ParticleEffect flame = bPlayer.hasSubElement(Element.BLUE_FIRE) ? ParticleEffect.SOUL_FIRE_FLAME : ParticleEffect.FLAME;
-			flame.display(location, 5, Math.random(), Math.random(), Math.random(), 0.02);
-			ParticleEffect.SMOKE_LARGE.display(location, 2, Math.random(), Math.random(), Math.random(), 0.01);
+			flame.display(location, 5, FastMath.random(), FastMath.random(), FastMath.random(), 0.02);
+			ParticleEffect.SMOKE_LARGE.display(location, 2, FastMath.random(), FastMath.random(), FastMath.random(), 0.01);
 			FireAbility.playFirebendingSound(location);
 
 			placeFire();
@@ -131,7 +133,7 @@ public class ESFire extends AvatarAbility implements AddonAbility {
 			for (Entity entity : GeneralMethods.getEntitiesAroundPoint(location, 2.5)) {
 				if (entity instanceof LivingEntity && entity.getEntityId() != player.getEntityId() && !(entity instanceof ArmorStand) && !GeneralMethods.isRegionProtectedFromBuild(this, entity.getLocation()) && !((entity instanceof Player) && Commands.invincible.contains(((Player) entity).getName()))) {
 					DamageHandler.damageEntity(entity, damage, this);
-					entity.setFireTicks(Math.round(burnTime / 50F));
+					entity.setFireTicks(FastMath.round(burnTime / 50F));
 					travelled = range;
 				}
 			}

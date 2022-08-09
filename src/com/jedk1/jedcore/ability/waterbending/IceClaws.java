@@ -9,6 +9,8 @@ import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.util.DamageHandler;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.ArmorStand;
@@ -139,7 +141,7 @@ public class IceClaws extends IceAbility implements AddonAbility {
 
 	private void displayChargeUp() {
 		Location location = getRightHandPos().toVector().add(player.getEyeLocation().getDirection().clone().multiply(.75D)).toLocation(player.getWorld());
-		ParticleEffect.WATER_SPLASH.display(location, 1, Math.random()/3, Math.random()/3, Math.random()/3, 0.0);
+		ParticleEffect.WATER_SPLASH.display(location, 1, FastMath.random()/3, FastMath.random()/3, FastMath.random()/3, 0.0);
 	}
 
 	public static boolean freezeEntity(Player player, LivingEntity entity) {

@@ -2,6 +2,8 @@ package com.jedk1.jedcore.collision;
 
 import org.bukkit.util.Vector;
 
+import net.jafama.FastMath;
+
 public class Sphere implements Collider {
     public Vector center;
     public double radius;
@@ -20,9 +22,9 @@ public class Sphere implements Collider {
         Vector max = aabb.max();
 
         // Get the point closest to sphere center on the aabb.
-        double x = Math.max(min.getX(), Math.min(center.getX(), max.getX()));
-        double y = Math.max(min.getY(), Math.min(center.getY(), max.getY()));
-        double z = Math.max(min.getZ(), Math.min(center.getZ(), max.getZ()));
+        double x = FastMath.max(min.getX(), FastMath.min(center.getX(), max.getX()));
+        double y = FastMath.max(min.getY(), FastMath.min(center.getY(), max.getY()));
+        double z = FastMath.max(min.getZ(), FastMath.min(center.getZ(), max.getZ()));
 
         // Check if that point is inside of the sphere.
         return contains(new Vector(x, y, z));

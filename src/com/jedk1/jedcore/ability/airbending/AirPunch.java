@@ -11,6 +11,8 @@ import com.projectkorra.projectkorra.ability.util.Collision;
 import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.util.DamageHandler;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -122,7 +124,7 @@ public class AirPunch extends AirAbility implements AddonAbility {
 					break;
 				}
 
-				getAirbendingParticles().display(loc, 2, Math.random() / 5, Math.random() / 5, Math.random() / 5, 0.0);
+				getAirbendingParticles().display(loc, 2, FastMath.random() / 5, FastMath.random() / 5, FastMath.random() / 5, 0.0);
 				playAirbendingSound(loc);
 
 				cancel = CollisionDetector.checkEntityCollisions(player, new Sphere(loc.toVector(), entityCollisionRadius), (entity) -> {

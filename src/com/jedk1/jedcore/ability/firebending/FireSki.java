@@ -13,6 +13,8 @@ import com.projectkorra.projectkorra.ability.FireAbility;
 import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
@@ -173,15 +175,15 @@ public class FireSki extends FireAbility implements AddonAbility {
 
 		for (Location l : JCMethods.getLinePoints(player.getEyeLocation().add(0, -0.5, 0).add(getRightHeadDirection(player).multiply(0.2)), right1, 6)) {
 			size += 0.05;
-			playFirebendingParticles(l, 4, (Math.random() * size + 0.01), (Math.random() * size + 0.01), (Math.random() * size + 0.01));
-			ParticleEffect.SMOKE_NORMAL.display(l, 1, (Math.random() * size + 0.01), (Math.random() * size + 0.01), (Math.random() * size + 0.01), 0.08);
+			playFirebendingParticles(l, 4, (FastMath.random() * size + 0.01), (FastMath.random() * size + 0.01), (FastMath.random() * size + 0.01));
+			ParticleEffect.SMOKE_NORMAL.display(l, 1, (FastMath.random() * size + 0.01), (FastMath.random() * size + 0.01), (FastMath.random() * size + 0.01), 0.08);
 		}
 
 		size = 0;
 		for (Location l : JCMethods.getLinePoints(player.getEyeLocation().add(0, -0.5, 0).add(getLeftHeadDirection(player).multiply(0.2)), left1, 6)) {
 			size += 0.05;
-			playFirebendingParticles(l, 4, (Math.random() * size + 0.01), (Math.random() * size + 0.01), (Math.random() * size + 0.01));
-			ParticleEffect.SMOKE_NORMAL.display(l, 1, (Math.random() * size + 0.01), (Math.random() * size + 0.01), (Math.random() * size + 0.01), 0.08);
+			playFirebendingParticles(l, 4, (FastMath.random() * size + 0.01), (FastMath.random() * size + 0.01), (FastMath.random() * size + 0.01));
+			ParticleEffect.SMOKE_NORMAL.display(l, 1, (FastMath.random() * size + 0.01), (FastMath.random() * size + 0.01), (FastMath.random() * size + 0.01), 0.08);
 		}
 	}
 

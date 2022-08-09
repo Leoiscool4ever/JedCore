@@ -12,6 +12,8 @@ import com.projectkorra.projectkorra.ability.WaterAbility;
 import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.util.DamageHandler;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
@@ -73,16 +75,16 @@ public class WaterBlast extends WaterAbility implements AddonAbility {
 	}
 
 	private boolean advanceAttack() {
-		int steps = (int)Math.ceil(speed);
+		int steps = (int) FastMath.ceil(speed);
 		// This is how much the last step should move by.
-		double remainder = speed - Math.floor(speed);
+		double remainder = speed - FastMath.floor(speed);
 
 		// Move in discrete steps so each block can be checked for collisions.
 		for (int i = 0; i < steps; i++) {
 			double stepSpeed = 1.0;
 
 			if (remainder > 0 && i == steps - 1) {
-				// The last step should only move by the remainder because there are Math.ceil(speed) steps.
+				// The last step should only move by the remainder because there are FastMath.ceil(speed) steps.
 				stepSpeed = remainder;
 			}
 

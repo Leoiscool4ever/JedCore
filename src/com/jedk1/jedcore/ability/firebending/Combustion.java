@@ -20,6 +20,8 @@ import com.projectkorra.projectkorra.util.DamageHandler;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 import com.projectkorra.projectkorra.util.TempBlock;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -208,7 +210,7 @@ public class Combustion extends CombustionAbility implements AddonAbility {
 				}
 
 				if (charged) {
-					ParticleEffect.SMOKE_LARGE.display(player.getLocation(), 1, Math.random(), Math.random(), Math.random(), 0.1);
+					ParticleEffect.SMOKE_LARGE.display(player.getLocation(), 1, FastMath.random(), FastMath.random(), FastMath.random(), 0.1);
 				}
 			} else {
 				if (charged) {
@@ -228,8 +230,8 @@ public class Combustion extends CombustionAbility implements AddonAbility {
 				}
 
 				double angle = currPoint * 3.141592653589793D / 180.0D;
-				double x = size * Math.cos(angle);
-				double z = size * Math.sin(angle);
+				double x = size * FastMath.cos(angle);
+				double z = size * FastMath.sin(angle);
 
 				Location loc = player.getLocation().add(x, 1.0D, z);
 				playFirebendingParticles(loc, 3, 0.0, 0.0, 0.0);
@@ -298,7 +300,7 @@ public class Combustion extends CombustionAbility implements AddonAbility {
 		}
 
 		private void travel() {
-			int r = (int) Math.sqrt(range);
+			int r = (int) FastMath.sqrt(range);
 
 			for (int i = 0; i < r; ++i) {
 				render();
@@ -454,14 +456,14 @@ public class Combustion extends CombustionAbility implements AddonAbility {
 
 		private void render(Location location) {
 			if (bPlayer.canUseSubElement(SubElement.BLUE_FIRE)) {
-				ParticleEffect.SOUL_FIRE_FLAME.display(location, 20, Math.random(), Math.random(), Math.random(), 0.5);
+				ParticleEffect.SOUL_FIRE_FLAME.display(location, 20, FastMath.random(), FastMath.random(), FastMath.random(), 0.5);
 			} else {
-				ParticleEffect.FLAME.display(location, 20, Math.random(), Math.random(), Math.random(), 0.5);
+				ParticleEffect.FLAME.display(location, 20, FastMath.random(), FastMath.random(), FastMath.random(), 0.5);
 			}
-			ParticleEffect.SMOKE_LARGE.display(location, 20, Math.random(), Math.random(), Math.random(), 0.5);
-			ParticleEffect.FIREWORKS_SPARK.display(location, 20, Math.random(), Math.random(), Math.random(), 0.5);
-			ParticleEffect.SMOKE_LARGE.display(location, 20, Math.random(), Math.random(), Math.random());
-			ParticleEffect.EXPLOSION_HUGE.display(location, 20, Math.random(), Math.random(), Math.random(), 0.5);
+			ParticleEffect.SMOKE_LARGE.display(location, 20, FastMath.random(), FastMath.random(), FastMath.random(), 0.5);
+			ParticleEffect.FIREWORKS_SPARK.display(location, 20, FastMath.random(), FastMath.random(), FastMath.random(), 0.5);
+			ParticleEffect.SMOKE_LARGE.display(location, 20, FastMath.random(), FastMath.random(), FastMath.random());
+			ParticleEffect.EXPLOSION_HUGE.display(location, 20, FastMath.random(), FastMath.random(), FastMath.random(), 0.5);
 
 			location.getWorld().playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 1f, 1f);
 		}

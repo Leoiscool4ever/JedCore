@@ -12,6 +12,9 @@ import com.projectkorra.projectkorra.util.ParticleEffect;
 import com.projectkorra.projectkorra.util.TempBlock;
 
 import com.projectkorra.projectkorra.waterbending.util.WaterReturn;
+
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Server;
@@ -60,14 +63,14 @@ public class HealingWaters extends HealingAbility implements AddonAbility {
 				if (entity instanceof LivingEntity && inWater(entity)) {
 					Location playerLoc = entity.getLocation();
 					playerLoc.add(0, 1, 0);
-					ParticleEffect.SPELL_MOB_AMBIENT.display(playerLoc, 3, Math.random(), Math.random(), Math.random(), 0.0);
+					ParticleEffect.SPELL_MOB_AMBIENT.display(playerLoc, 3, FastMath.random(), FastMath.random(), FastMath.random(), 0.0);
 					ParticleEffect.WATER_WAKE.display(playerLoc, 25, 0, 0, 0, 0.05F);
 					giveHPToEntity((LivingEntity) entity);
 				}
 			} else {
 				Location playerLoc = player.getLocation();
 				playerLoc.add(0, 1, 0);
-				ParticleEffect.SPELL_MOB_AMBIENT.display(playerLoc, 3, Math.random(), Math.random(), Math.random(), 0.0);
+				ParticleEffect.SPELL_MOB_AMBIENT.display(playerLoc, 3, FastMath.random(), FastMath.random(), FastMath.random(), 0.0);
 				ParticleEffect.WATER_WAKE.display(playerLoc, 25, 0, 0, 0, 0.05F);
 				giveHP(player);
 			}
@@ -79,7 +82,7 @@ public class HealingWaters extends HealingAbility implements AddonAbility {
 					if (dLe.getHealth() < dLe.getMaxHealth()) {
 						Location playerLoc = entity.getLocation();
 						playerLoc.add(0, 1, 0);
-						ParticleEffect.SPELL_MOB_AMBIENT.display(playerLoc, 3, Math.random(), Math.random(), Math.random(), 0.0);
+						ParticleEffect.SPELL_MOB_AMBIENT.display(playerLoc, 3, FastMath.random(), FastMath.random(), FastMath.random(), 0.0);
 						ParticleEffect.WATER_WAKE.display(playerLoc, 25, 0, 0, 0, 0.05F);
 						giveHPToEntity((LivingEntity) entity);
 						entity.setFireTicks(0);
@@ -91,7 +94,7 @@ public class HealingWaters extends HealingAbility implements AddonAbility {
 			} else {
 				Location playerLoc = player.getLocation();
 				playerLoc.add(0, 1, 0);
-				ParticleEffect.SPELL_MOB_AMBIENT.display(playerLoc, 3, Math.random(), Math.random(), Math.random(), 0.0);
+				ParticleEffect.SPELL_MOB_AMBIENT.display(playerLoc, 3, FastMath.random(), FastMath.random(), FastMath.random(), 0.0);
 				ParticleEffect.WATER_WAKE.display(playerLoc, 25, 0, 0, 0, 0.05F);
 				giveHP(player);
 				player.setFireTicks(0);

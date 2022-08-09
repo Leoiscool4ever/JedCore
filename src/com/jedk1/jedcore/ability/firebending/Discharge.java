@@ -12,6 +12,8 @@ import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.command.Commands;
 import com.projectkorra.projectkorra.util.DamageHandler;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
@@ -138,7 +140,8 @@ public class Discharge extends LightningAbility implements AddonAbility {
 					playLightningbendingParticle(l.clone(), 0f, 0f, 0f);
 
 					if (rand.nextInt(3) == 0) {
-						player.getWorld().playSound(l, Sound.ENTITY_CREEPER_PRIMED, 1, 0);
+
+						playLightningbendingSound(l);
 					}
 
 					Vector vec = l.toVector();
@@ -153,11 +156,11 @@ public class Discharge extends LightningAbility implements AddonAbility {
 						DamageHandler.damageEntity(entity, damage, this);
 
 						for (int k = 0; k < 5; k++) {
-							playLightningbendingParticle(entity.getLocation(), (float) Math.random(), (float) Math.random(), (float) Math.random());
+							playLightningbendingParticle(entity.getLocation(), (float) FastMath.random(), (float) FastMath.random(), (float) FastMath.random());
 						}
 
-						entity.getWorld().playSound(entity.getLocation(), Sound.ENTITY_CREEPER_PRIMED, 1, 0);
-						player.getWorld().playSound(player.getLocation(), Sound.ENTITY_CREEPER_PRIMED, 1, 0);
+						playLightningbendingSound(entity.getLocation());
+						playLightningbendingSound(player.getLocation());
 
 						return true;
 					});

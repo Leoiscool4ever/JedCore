@@ -7,6 +7,8 @@ import com.projectkorra.projectkorra.Element;
 import com.projectkorra.projectkorra.ability.IceAbility;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.block.BlockFace;
@@ -44,7 +46,7 @@ public class IcePassive {
 			BendingPlayer bPlayer = BendingPlayer.getBendingPlayer(player);
 			if (bPlayer != null && bPlayer.canIcebend() && bPlayer.isElementToggled(Element.WATER) && bPlayer.hasElement(Element.WATER) && !JCMethods.isDisabledWorld(player.getWorld())) {
 				if (player.isSprinting() && IceAbility.isIce(player.getLocation().getBlock().getRelative(BlockFace.DOWN)) && player.isOnGround()) {
-					ParticleEffect.SNOW_SHOVEL.display(player.getLocation().clone().add(0, 0.2, 0), 15, Math.random()/2, Math.random()/2, Math.random()/2, 0);
+					ParticleEffect.SNOW_SHOVEL.display(player.getLocation().clone().add(0, 0.2, 0), 15, FastMath.random()/2, FastMath.random()/2, FastMath.random()/2, 0);
 					player.removePotionEffect(PotionEffectType.SPEED);
 					player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 60, speedFactor));	
 				}

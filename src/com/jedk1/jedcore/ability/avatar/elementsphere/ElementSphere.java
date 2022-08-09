@@ -12,6 +12,8 @@ import com.projectkorra.projectkorra.ability.util.MultiAbilityManager.MultiAbili
 import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
+import net.jafama.FastMath;
+
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -227,9 +229,9 @@ public class ElementSphere extends AvatarAbility implements AddonAbility, MultiA
 		if (airUses != 0)
 			for (double j = -180; j <= 180; j += 45) {
 				Location tempLoc = fakeLoc.clone();
-				Vector newDir = direction.clone().multiply(2 * Math.cos(Math.toRadians(j)));
+				Vector newDir = direction.clone().multiply(2 * FastMath.cos(FastMath.toRadians(j)));
 				tempLoc.add(newDir);
-				tempLoc.setY(tempLoc.getY() + 2 + (2 * Math.sin(Math.toRadians(j))));
+				tempLoc.setY(tempLoc.getY() + 2 + (2 * FastMath.sin(FastMath.toRadians(j))));
 				if (rand.nextInt(30) == 0) {
 					ParticleEffect.SPELL_MOB.display(tempLoc, 0, 255, 255, 255, 0.003);
 				} else {
@@ -240,9 +242,9 @@ public class ElementSphere extends AvatarAbility implements AddonAbility, MultiA
 		point++;
 		if (fireUses != 0)
 			for (int i = -180; i < 180; i += 40) {
-				double angle = (i * Math.PI / 180);
-				double x = 2 * Math.cos(angle + point);
-				double z = 2 * Math.sin(angle + point);
+				double angle = (i * FastMath.PI / 180);
+				double x = 2 * FastMath.cos(angle + point);
+				double z = 2 * FastMath.sin(angle + point);
 				Location loc = location.clone();
 				loc.add(x, 2, z);
 				ParticleEffect flame = bPlayer.hasSubElement(Element.BLUE_FIRE) ? ParticleEffect.SOUL_FIRE_FLAME : ParticleEffect.FLAME;
@@ -252,14 +254,14 @@ public class ElementSphere extends AvatarAbility implements AddonAbility, MultiA
 		point++;
 		Location location = this.location.clone().add(0, 2, 0);
 		for (int i = -180; i < 180; i += 30) {
-			double angle = (i * Math.PI / 180);
+			double angle = (i * FastMath.PI / 180);
 			double xRotation = 3.141592653589793D / 3 * 2.1;
-			Vector v = new Vector(Math.cos(angle + point), Math.sin(angle + point), 0.0D).multiply(2);
+			Vector v = new Vector(FastMath.cos(angle + point), FastMath.sin(angle + point), 0.0D).multiply(2);
 			Vector v1 = v.clone();
 			rotateAroundAxisX(v, xRotation);
-			rotateAroundAxisY(v, -((location.getYaw() * Math.PI / 180) - 1.575));
+			rotateAroundAxisY(v, -((location.getYaw() * FastMath.PI / 180) - 1.575));
 			rotateAroundAxisX(v1, -xRotation);
-			rotateAroundAxisY(v1, -((location.getYaw() * Math.PI / 180) - 1.575));
+			rotateAroundAxisY(v1, -((location.getYaw() * FastMath.PI / 180) - 1.575));
 
 			if (waterUses != 0)
 				GeneralMethods.displayColoredParticle("06C1FF", location.clone().add(v));
@@ -273,16 +275,16 @@ public class ElementSphere extends AvatarAbility implements AddonAbility, MultiA
 	}
 
 	private void rotateAroundAxisX(Vector v, double angle) {
-		double cos = Math.cos(angle);
-		double sin = Math.sin(angle);
+		double cos = FastMath.cos(angle);
+		double sin = FastMath.sin(angle);
 		double y = v.getY() * cos - v.getZ() * sin;
 		double z = v.getY() * sin + v.getZ() * cos;
 		v.setY(y).setZ(z);
 	}
 
 	private void rotateAroundAxisY(Vector v, double angle) {
-		double cos = Math.cos(angle);
-		double sin = Math.sin(angle);
+		double cos = FastMath.cos(angle);
+		double sin = FastMath.sin(angle);
 		double x = v.getX() * cos + v.getZ() * sin;
 		double z = v.getX() * -sin + v.getZ() * cos;
 		v.setX(x).setZ(z);

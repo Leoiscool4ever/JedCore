@@ -11,6 +11,8 @@ import com.projectkorra.projectkorra.ability.CoreAbility;
 import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.util.DamageHandler;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
@@ -83,7 +85,7 @@ public class SonicBlast extends AirAbility implements AddonAbility {
 			direction = player.getEyeLocation().getDirection().normalize();
 
 			if (isCharged) {
-				playAirbendingParticles(player.getLocation().add(0, 1, 0), 5, (float) Math.random(), (float) Math.random(), (float) Math.random());
+				playAirbendingParticles(player.getLocation().add(0, 1, 0), 5, (float) FastMath.random(), (float) FastMath.random(), (float) FastMath.random());
 			} else if (System.currentTimeMillis() > getStartTime() + warmup) {
 				isCharged = true;
 			}

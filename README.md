@@ -5,6 +5,16 @@ Join our [Discord](https://discord.gg/gh9MfDmwZm) to discuss the plugin, suggest
 
 ## Changelog
 
+### 2.10.1
+- Changed spigot to 1.17.1 
+- Made JedCore work with ProjectKorra Roku fork
+- Changed Math to FastMath
+- Removed BendingBoard
+- Changed SwiftStream combination (cause it doesn't work with Flight after rework)
+- Remove fireticks from SpiritBeam (annoying in pvp)
+- Made Discharge and LightningBurst use sounds from ProjectKorra config.yml
+- EarthKick doesn't remove earth block under it (annoying in pvp)
+
 ### 2.10.0
 - Used World#getMinHeight and World#getMaxHeight instead of hard-coded Y-values for certain abilities' cancellations (for 1.18 world height changes)
 - Added getters and setters to almost all abilities for improved data accessibility

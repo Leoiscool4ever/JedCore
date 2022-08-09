@@ -9,6 +9,8 @@ import com.projectkorra.projectkorra.ability.LightningAbility;
 import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.util.DamageHandler;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
@@ -85,9 +87,9 @@ public class LightningBurst extends LightningAbility implements AddonAbility {
 					fake.setYaw(i);
 					for (double j = -180; j <= 180; j += 55) {
 						Location temp = fake.clone();
-						Vector dir = fake.getDirection().clone().multiply(2 * Math.cos(Math.toRadians(j)));
+						Vector dir = fake.getDirection().clone().multiply(2 * FastMath.cos(FastMath.toRadians(j)));
 						temp.add(dir);
-						temp.setY(temp.getY() + 2 + (2 * Math.sin(Math.toRadians(j))));
+						temp.setY(temp.getY() + 2 + (2 * FastMath.sin(FastMath.toRadians(j))));
 						dir = GeneralMethods.getDirection(player.getLocation().add(0, 0, 0), temp);
 						spawnBolt(player.getLocation().clone().add(0, 1, 0).setDirection(dir), radius, 1, 20, true);
 					}
@@ -117,9 +119,9 @@ public class LightningBurst extends LightningAbility implements AddonAbility {
 			for (double j = -180; j <= 180; j += 55) {
 				if (rand.nextInt(100) == 0) {
 					Location temp = fake.clone();
-					Vector dir = fake.getDirection().clone().multiply(1.2 * Math.cos(Math.toRadians(j)));
+					Vector dir = fake.getDirection().clone().multiply(1.2 * FastMath.cos(FastMath.toRadians(j)));
 					temp.add(dir);
-					temp.setY(temp.getY() + 1.2 + (1.2 * Math.sin(Math.toRadians(j))));
+					temp.setY(temp.getY() + 1.2 + (1.2 * FastMath.sin(FastMath.toRadians(j))));
 					dir = GeneralMethods.getDirection(temp, player.getLocation().add(0, 1, 0));
 					spawnBolt(temp.setDirection(dir), 1, 0.2, 20, false);
 				}
@@ -309,7 +311,8 @@ public class LightningBurst extends LightningAbility implements AddonAbility {
 			}
 
 			if (rand.nextInt(3) == 0) {
-				location.getWorld().playSound(location, Sound.ENTITY_CREEPER_PRIMED, 1, 0);
+
+				playLightningbendingSound(location);
 			}
 
 			for (Entity entity : GeneralMethods.getEntitiesAroundPoint(location, 2)) {

@@ -29,6 +29,8 @@ import com.projectkorra.projectkorra.firebending.util.FireDamageTimer;
 import com.projectkorra.projectkorra.util.DamageHandler;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
+import net.jafama.FastMath;
+
 public class LavaFlux extends LavaAbility implements AddonAbility {
 
 	@Attribute(Attribute.SPEED)
@@ -114,8 +116,8 @@ public class LavaFlux extends LavaAbility implements AddonAbility {
 
 	private boolean prepareLine() {
 		Vector direction = player.getEyeLocation().getDirection().setY(0).normalize();
-		Vector blockdirection = direction.clone().setX(Math.round(direction.getX()));
-		blockdirection = blockdirection.setZ(Math.round(direction.getZ()));
+		Vector blockdirection = direction.clone().setX(FastMath.round(direction.getX()));
+		blockdirection = blockdirection.setZ(FastMath.round(direction.getZ()));
 		Location origin = player.getLocation().add(0, -1, 0).add(blockdirection.multiply(2));
 		if (isEarthbendable(player, origin.getBlock())) {
 			BlockIterator bi = new BlockIterator(player.getWorld(), origin.toVector(), direction, 0, range);
@@ -168,7 +170,7 @@ public class LavaFlux extends LavaAbility implements AddonAbility {
 				this.location = location;
 				if (flux.indexOf(location) == step) {
 					Block above = location.getBlock().getRelative(BlockFace.UP);
-					ParticleEffect.LAVA.display(above.getLocation(), 2, Math.random(), Math.random(), Math.random(), 0);
+					ParticleEffect.LAVA.display(above.getLocation(), 2, FastMath.random(), FastMath.random(), FastMath.random(), 0);
 					applyDamageFromWave(above.getLocation());
 					if (wave) {
 						if (isTransparent(above)) {

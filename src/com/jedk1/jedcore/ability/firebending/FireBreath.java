@@ -33,6 +33,8 @@ import com.projectkorra.projectkorra.util.ParticleEffect;
 import com.projectkorra.projectkorra.util.TempBlock;
 import com.projectkorra.projectkorra.waterbending.ice.PhaseChange;
 
+import net.jafama.FastMath;
+
 public class FireBreath extends FireAbility implements AddonAbility {
 
 	public static List<UUID> rainbowPlayer = new ArrayList<>();
@@ -230,8 +232,8 @@ public class FireBreath extends FireAbility implements AddonAbility {
 						displayParticle(getOffsetLocation(loc, offset), 1, 128, 36, 171);
 				}
 			} else {
-				playFirebendingParticles(loc, particles, Math.random(), Math.random(), Math.random());
-				ParticleEffect.SMOKE_NORMAL.display(loc, particles, Math.random(), Math.random(), Math.random(), size);
+				playFirebendingParticles(loc, particles, FastMath.random(), FastMath.random(), FastMath.random());
+				ParticleEffect.SMOKE_NORMAL.display(loc, particles, FastMath.random(), FastMath.random(), FastMath.random(), size);
 			}
 		}
 	}
@@ -249,7 +251,7 @@ public class FireBreath extends FireAbility implements AddonAbility {
 	 * amount.
 	 */
 	private Location getOffsetLocation(Location loc, double offset) {
-		return loc.clone().add((float) ((Math.random() - 0.5) * offset), (float) ((Math.random() - 0.5) * offset), (float) ((Math.random() - 0.5) * offset));
+		return loc.clone().add((float) ((FastMath.random() - 0.5) * offset), (float) ((FastMath.random() - 0.5) * offset), (float) ((FastMath.random() - 0.5) * offset));
 	}
 
 	public static void toggleRainbowBreath(Player player, boolean activate) {

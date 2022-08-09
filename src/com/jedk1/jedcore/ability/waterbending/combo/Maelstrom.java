@@ -14,6 +14,8 @@ import com.projectkorra.projectkorra.util.ClickType;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 import com.projectkorra.projectkorra.waterbending.Torrent;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -177,16 +179,16 @@ public class Maelstrom extends WaterAbility implements AddonAbility, ComboAbilit
 		for (int i = 0; i < levelStep; i++) {
 			for (int degree = 0; degree < waves; degree++) {
 				double size = (levelStep - i) - 1;
-				double angle = ((newAngle + (degree * (360F / waves))) * Math.PI / 180);
-				double x = size * Math.cos(angle);
-				double z = size * Math.sin(angle);
+				double angle = ((newAngle + (degree * (360F / waves))) * FastMath.PI / 180);
+				double x = size * FastMath.cos(angle);
+				double z = size * FastMath.sin(angle);
 				Location loc = origin.clone();
 				loc.add(x + 0.5, -(i - 0.5), z + 0.5);
 				Block b = loc.getBlock();
 				for (int j = 0; j < 2; j++) {
 					wave.add(b.getRelative(BlockFace.DOWN, j));
 					new RegenTempBlock(b.getRelative(BlockFace.DOWN, j), Material.WATER, Material.WATER.createBlockData(bd -> ((Levelled) bd).setLevel(1)), 0);
-					ParticleEffect.WATER_SPLASH.display(loc, 3, Math.random(), Math.random(), Math.random(), 0);
+					ParticleEffect.WATER_SPLASH.display(loc, 3, FastMath.random(), FastMath.random(), FastMath.random(), 0);
 				}
 			}
 			newAngle += 15;

@@ -22,6 +22,9 @@ import com.projectkorra.projectkorra.waterbending.Torrent;
 import com.projectkorra.projectkorra.waterbending.ice.PhaseChange;
 import com.projectkorra.projectkorra.waterbending.plant.PlantRegrowth;
 import com.projectkorra.projectkorra.waterbending.util.WaterReturn;
+
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -274,13 +277,13 @@ public class WaterGimbal extends WaterAbility implements AddonAbility, ComboAbil
 			boolean completed = false;
 			double velocity = 0.15;
 			double angle =  3.0 + this.step * velocity;
-			double xRotation = Math.PI / 2.82 * 2.1;
-			Vector v1 = new Vector(Math.cos(angle), Math.sin(angle), 0.0D).multiply(ringSize);
-			Vector v2 = new Vector(Math.cos(angle), Math.sin(angle), 0.0D).multiply(ringSize);
+			double xRotation = FastMath.PI / 2.82 * 2.1;
+			Vector v1 = new Vector(FastMath.cos(angle), FastMath.sin(angle), 0.0D).multiply(ringSize);
+			Vector v2 = new Vector(FastMath.cos(angle), FastMath.sin(angle), 0.0D).multiply(ringSize);
 			rotateAroundAxisX(v1, xRotation);
 			rotateAroundAxisX(v2, -xRotation);
-			rotateAroundAxisY(v1, -((location.getYaw() * Math.PI / 180) - 1.575));
-			rotateAroundAxisY(v2, -((location.getYaw() * Math.PI / 180) - 1.575));
+			rotateAroundAxisY(v1, -((location.getYaw() * FastMath.PI / 180) - 1.575));
+			rotateAroundAxisY(v2, -((location.getYaw() * FastMath.PI / 180) - 1.575));
 
 			if (!ring1.contains(l.clone().add(v1).getBlock()) && !leftConsumed) {
 				completed = true;
@@ -351,16 +354,16 @@ public class WaterGimbal extends WaterAbility implements AddonAbility, ComboAbil
 	}
 
 	private void rotateAroundAxisX(Vector v, double angle) {
-		double cos = Math.cos(angle);
-		double sin = Math.sin(angle);
+		double cos = FastMath.cos(angle);
+		double sin = FastMath.sin(angle);
 		double y = v.getY() * cos - v.getZ() * sin;
 		double z = v.getY() * sin + v.getZ() * cos;
 		v.setY(y).setZ(z);
 	}
 
 	private void rotateAroundAxisY(Vector v, double angle) {
-		double cos = Math.cos(angle);
-		double sin = Math.sin(angle);
+		double cos = FastMath.cos(angle);
+		double sin = FastMath.sin(angle);
 		double x = v.getX() * cos + v.getZ() * sin;
 		double z = v.getX() * -sin + v.getZ() * cos;
 		v.setX(x).setZ(z);

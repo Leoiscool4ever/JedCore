@@ -13,6 +13,8 @@ import com.projectkorra.projectkorra.util.Information;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 import com.projectkorra.projectkorra.util.TempBlock;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -66,8 +68,8 @@ public class Fissure extends LavaAbility implements AddonAbility {
 		location = player.getLocation().clone();
 		location.setPitch(0);
 		direction = location.getDirection();
-		blockDirection = this.direction.clone().setX(Math.round(this.direction.getX()));
-		blockDirection = blockDirection.setZ(Math.round(direction.getZ()));
+		blockDirection = this.direction.clone().setX(FastMath.round(this.direction.getX()));
+		blockDirection = blockDirection.setZ(FastMath.round(direction.getZ()));
 		if (prepareLine()) {
 			start();
 			if (!isRemoved()) {
@@ -105,8 +107,8 @@ public class Fissure extends LavaAbility implements AddonAbility {
 
 	private boolean prepareLine() {
 		direction = player.getEyeLocation().getDirection().setY(0).normalize();
-		blockDirection = this.direction.clone().setX(Math.round(this.direction.getX()));
-		blockDirection = blockDirection.setZ(Math.round(direction.getZ()));
+		blockDirection = this.direction.clone().setX(FastMath.round(this.direction.getX()));
+		blockDirection = blockDirection.setZ(FastMath.round(direction.getZ()));
 		Location origin = player.getLocation().add(0, -1, 0).add(blockDirection.multiply(2));
 		if (isEarthbendable(player, origin.getBlock())) {
 			BlockIterator bi = new BlockIterator(player.getWorld(), origin.toVector(), direction, 0, slapRange);

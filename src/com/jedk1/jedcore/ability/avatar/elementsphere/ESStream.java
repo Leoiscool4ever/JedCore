@@ -14,6 +14,8 @@ import com.projectkorra.projectkorra.command.Commands;
 import com.projectkorra.projectkorra.util.DamageHandler;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -167,11 +169,11 @@ public class ESStream extends AvatarAbility implements AddonAbility {
 				}
 			}
 
-			ParticleEffect.FLAME.display(stream, 20, Math.random(), Math.random(), Math.random(), 0.5);
-			ParticleEffect.SMOKE_LARGE.display(stream, 20, Math.random(), Math.random(), Math.random(), 0.5);
-			ParticleEffect.FIREWORKS_SPARK.display(stream, 20, Math.random(), Math.random(), Math.random(), 0.5);
-			ParticleEffect.SMOKE_LARGE.display(stream, 20, Math.random(), Math.random(), Math.random(), 0.5);
-			ParticleEffect.EXPLOSION_HUGE.display(stream, 5, Math.random(), Math.random(), Math.random(), 0.5);
+			ParticleEffect.FLAME.display(stream, 20, FastMath.random(), FastMath.random(), FastMath.random(), 0.5);
+			ParticleEffect.SMOKE_LARGE.display(stream, 20, FastMath.random(), FastMath.random(), FastMath.random(), 0.5);
+			ParticleEffect.FIREWORKS_SPARK.display(stream, 20, FastMath.random(), FastMath.random(), FastMath.random(), 0.5);
+			ParticleEffect.SMOKE_LARGE.display(stream, 20, FastMath.random(), FastMath.random(), FastMath.random(), 0.5);
+			ParticleEffect.EXPLOSION_HUGE.display(stream, 5, FastMath.random(), FastMath.random(), FastMath.random(), 0.5);
 
 			stream.getWorld().playSound(stream, (rand.nextBoolean()) ? Sound.ENTITY_FIREWORK_ROCKET_BLAST : Sound.ENTITY_FIREWORK_ROCKET_BLAST_FAR, 1f, 1f);
 			stream.getWorld().playSound(stream, (rand.nextBoolean()) ? Sound.ENTITY_FIREWORK_ROCKET_TWINKLE : Sound.ENTITY_FIREWORK_ROCKET_TWINKLE_FAR, 1f, 1f);

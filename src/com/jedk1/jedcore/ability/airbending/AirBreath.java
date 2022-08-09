@@ -11,6 +11,8 @@ import com.projectkorra.projectkorra.command.Commands;
 import com.projectkorra.projectkorra.util.DamageHandler;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.ConfigurationSection;
@@ -173,16 +175,16 @@ public class AirBreath extends AirAbility implements AddonAbility {
 			}
 
 			if (isWater(loc.getBlock())) {
-				ParticleEffect.WATER_BUBBLE.display(loc, particles, Math.random(), Math.random(), Math.random(), size);
+				ParticleEffect.WATER_BUBBLE.display(loc, particles, FastMath.random(), FastMath.random(), FastMath.random(), size);
 			}
 
 			JCMethods.extinguishBlocks(player, "AirBreath", range, 2, extinguishFire, coolLava);
 
 			if (getAirbendingParticles() == ParticleEffect.CLOUD) {
-				ParticleEffect.CLOUD.display(loc, particles, Math.random(), Math.random(), Math.random(), size);
-				ParticleEffect.SPELL.display(loc, particles, Math.random(), Math.random(), Math.random(), size);
+				ParticleEffect.CLOUD.display(loc, particles, FastMath.random(), FastMath.random(), FastMath.random(), size);
+				ParticleEffect.SPELL.display(loc, particles, FastMath.random(), FastMath.random(), FastMath.random(), size);
 			} else {
-				getAirbendingParticles().display(loc, particles, Math.random(), Math.random(), Math.random(), size);
+				getAirbendingParticles().display(loc, particles, FastMath.random(), FastMath.random(), FastMath.random(), size);
 			}
 		}
 	}

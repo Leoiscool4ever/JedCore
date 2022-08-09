@@ -13,6 +13,9 @@ import com.projectkorra.projectkorra.BendingPlayer;
 import com.projectkorra.projectkorra.ability.AddonAbility;
 import com.projectkorra.projectkorra.ability.ChiAbility;
 import com.projectkorra.projectkorra.chiblocking.passive.ChiPassive;
+
+import net.jafama.FastMath;
+
 import org.bukkit.util.Vector;
 
 public class Backstab extends ChiAbility implements AddonAbility {
@@ -33,7 +36,7 @@ public class Backstab extends ChiAbility implements AddonAbility {
 		}
 
 		ConfigurationSection config = JedCoreConfig.getConfig(player);
-		double activationAngle = Math.toRadians(config.getInt("Abilities.Chi.Backstab.MaxActivationAngle", 90));
+		double activationAngle = FastMath.toRadians(config.getInt("Abilities.Chi.Backstab.MaxActivationAngle", 90));
 
 		Vector targetDirection = target.getLocation().getDirection().setY(0).normalize();
 		Vector toTarget = target.getLocation().toVector().subtract(player.getLocation().toVector()).setY(0).normalize();

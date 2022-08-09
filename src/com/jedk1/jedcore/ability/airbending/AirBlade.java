@@ -10,6 +10,8 @@ import com.projectkorra.projectkorra.ability.AirAbility;
 import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.util.DamageHandler;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -103,10 +105,10 @@ public class AirBlade extends AirAbility implements AddonAbility {
 				tempLoc.setPitch(0);
 				Vector tempDir = tempLoc.getDirection().clone();
 				tempDir.setY(0);
-				Vector newDir = tempDir.clone().multiply(growth * Math.cos(Math.toRadians(i)));
+				Vector newDir = tempDir.clone().multiply(growth * FastMath.cos(FastMath.toRadians(i)));
 				tempLoc.add(newDir);
-				tempLoc.setY(tempLoc.getY() + (growth * Math.sin(Math.toRadians(i))));
-				playAirbendingParticles(tempLoc, 1, (float) Math.random() / 2, (float) Math.random() / 2, (float) Math.random() / 2);
+				tempLoc.setY(tempLoc.getY() + (growth * FastMath.sin(FastMath.toRadians(i))));
+				playAirbendingParticles(tempLoc, 1, (float) FastMath.random() / 2, (float) FastMath.random() / 2, (float) FastMath.random() / 2);
 
 				if (j == 0) {
 					// Only check collisions for each block.
@@ -148,9 +150,9 @@ public class AirBlade extends AirAbility implements AddonAbility {
 			tempLoc.setPitch(0);
 			Vector tempDir = tempLoc.getDirection().clone();
 			tempDir.setY(0);
-			Vector newDir = tempDir.clone().multiply(growth * Math.cos(Math.toRadians(i)));
+			Vector newDir = tempDir.clone().multiply(growth * FastMath.cos(FastMath.toRadians(i)));
 			tempLoc.add(newDir);
-			tempLoc.setY(tempLoc.getY() + (growth * Math.sin(Math.toRadians(i))));
+			tempLoc.setY(tempLoc.getY() + (growth * FastMath.sin(FastMath.toRadians(i))));
 
 			locations.add(tempLoc);
 		}

@@ -15,6 +15,8 @@ import com.projectkorra.projectkorra.ability.util.Collision;
 import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.util.*;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -117,13 +119,6 @@ public class EarthKick extends EarthAbility implements AddonAbility {
 	}
 
 	private void launchBlocks() {
-		if (EarthAbility.getMovedEarth().containsKey(block)){
-			block.setType(Material.AIR);
-		}
-		if (block.getType() != Material.AIR) {
-			TempBlock air = new TempBlock(block, Material.AIR);
-			air.setRevertTime(5000L);
-		}
 
 		location.setPitch(0);
 		Vector direction = location.getDirection();
@@ -133,9 +128,9 @@ public class EarthKick extends EarthAbility implements AddonAbility {
 			location.setY(location.getY() + 1.0);
 		}
 
-		ParticleEffect.CRIT.display(location, 10, Math.random(), Math.random(), Math.random(), 0.1);
+		ParticleEffect.CRIT.display(location, 10, FastMath.random(), FastMath.random(), FastMath.random(), 0.1);
 
-		int yaw = Math.round(location.getYaw());
+		int yaw = FastMath.round(location.getYaw());
 
 		playEarthbendingSound(location);
 

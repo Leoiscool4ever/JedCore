@@ -17,7 +17,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 import com.jedk1.jedcore.configuration.JedCoreConfig;
-import com.jedk1.jedcore.scoreboard.BendingBoard;
 import com.projectkorra.projectkorra.GeneralMethods;
 import com.projectkorra.projectkorra.ProjectKorra;
 import com.projectkorra.projectkorra.ability.CoreAbility;
@@ -329,18 +328,13 @@ public class JCMethods {
 		JedCore.log.info("JedCore Reloaded.");
 		JedCore.plugin.reloadConfig();
 		JedCore.logDebug = JedCoreConfig.getConfig((World)null).getBoolean("Properties.LogDebug");
-		JedCoreConfig.board.reloadConfig();
 		CoreAbility.registerPluginAbilities(JedCore.plugin, "com.jedk1.jedcore.ability");
 		registerDisabledWorlds();
 		registerCombos();
 		RegenTempBlock.revertAll();
 		TempFallingBlock.removeAllFallingBlocks();
-		BendingBoard.setFields();
-		BendingBoard.updateOnline();
 		JedCore.plugin.initializeCollisions();
 		FireTick.loadMethod();
 		CooldownEnforcer.onConfigReload();
-
-		BendingBoard.loadOtherCooldowns();
 	}
 }

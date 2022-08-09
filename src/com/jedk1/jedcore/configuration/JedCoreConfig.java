@@ -13,44 +13,13 @@ import java.util.ArrayList;
 
 public class JedCoreConfig {
 
-	public static Config board;
 	static JedCore plugin;
 	
 	public JedCoreConfig(JedCore plugin) {
 		JedCoreConfig.plugin = plugin;
-		board = new Config(new File("board.yml"));
-		loadConfigBoard();
 		loadConfigCore();
 	}
 	
-	private void loadConfigBoard() {
-		FileConfiguration config;
-		config = board.getConfig();
-		
-		config.addDefault("Settings.Enabled", true);
-		config.addDefault("Settings.Title", "&lSlots");
-		config.addDefault("Settings.EmptySlot", "&8&o-- Slot % --");
-		config.addDefault("Settings.Combos", "&fCombos:");
-		config.addDefault("Settings.Toggle.Off", "&7You have hidden the bending board.");
-		config.addDefault("Settings.Toggle.On", "&7You have toggled the bending board on.");
-		config.addDefault("Settings.Display.DisabledWorlds", true);
-
-		config.addDefault("Settings.OtherCooldowns.WallRun.Color", "GOLD");
-		config.addDefault("Settings.OtherCooldowns.WallRun.Enabled", true);
-		config.addDefault("Settings.OtherCooldowns.TorrentWave.Color", "AQUA");
-		config.addDefault("Settings.OtherCooldowns.TorrentWave.Enabled", true);
-		config.addDefault("Settings.OtherCooldowns.SurgeWave.Color", "AQUA");
-		config.addDefault("Settings.OtherCooldowns.SurgeWave.Enabled", true);
-		config.addDefault("Settings.OtherCooldowns.SurgeWall.Color", "AQUA");
-		config.addDefault("Settings.OtherCooldowns.SurgeWall.Enabled", true);
-		config.addDefault("Settings.OtherCooldowns.RaiseEarthPillar.Color", "GREEN");
-		config.addDefault("Settings.OtherCooldowns.RaiseEarthPillar.Enabled", true);
-		config.addDefault("Settings.OtherCooldowns.RaiseEarthWall.Color", "GREEN");
-		config.addDefault("Settings.OtherCooldowns.RaiseEarthWall.Enabled", true);
-		
-		config.options().copyDefaults(true);
-		board.saveConfig();
-	}
 	
 	private void loadConfigCore() {
 		FileConfiguration config;

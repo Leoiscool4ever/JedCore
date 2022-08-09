@@ -139,15 +139,16 @@ public class SwiftStream extends FlightAbility implements AddonAbility, ComboAbi
 	@Override
 	public ArrayList<AbilityInformation> getCombination() {
 		ArrayList<AbilityInformation> combination = new ArrayList<>();
-		combination.add(new AbilityInformation("Flight", ClickType.SHIFT_UP));
-		combination.add(new AbilityInformation("Flight", ClickType.LEFT_CLICK));
-		combination.add(new AbilityInformation("Flight", ClickType.LEFT_CLICK));
+		combination.add(new AbilityInformation("AirShield", ClickType.SHIFT_DOWN));
+		combination.add(new AbilityInformation("AirShield", ClickType.SHIFT_UP));
+		combination.add(new AbilityInformation("AirBlast", ClickType.LEFT_CLICK));
+		combination.add(new AbilityInformation("AirBlast", ClickType.LEFT_CLICK));
 		return combination;
 	}
 
 	@Override
 	public String getInstructions() {
-		return "Flight (Start Flying) " + "> Flight (Release Shift) > Flight (Left Click) " + "> Flight (Left Click)";
+		return "AirShield (Tap Shift) " + "> AirBlast (Left Click) " + "> AirBlast (Left Click)";
 	}
 
 	@Override

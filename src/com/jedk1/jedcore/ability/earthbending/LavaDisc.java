@@ -33,6 +33,8 @@ import com.projectkorra.projectkorra.util.DamageHandler;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 import com.projectkorra.projectkorra.util.TempBlock;
 
+import net.jafama.FastMath;
+
 public class LavaDisc extends LavaAbility implements AddonAbility {
 
 	private Location location;
@@ -182,7 +184,7 @@ public class LavaDisc extends LavaAbility implements AddonAbility {
 		DamageHandler.damageEntity(entity, damage, this);
 		entity.setFireTicks(20);
 		new FireDamageTimer(entity, player);
-		ParticleEffect.LAVA.display(entity.getLocation(), 15, Math.random(), Math.random(), Math.random(), 0.1);
+		ParticleEffect.LAVA.display(entity.getLocation(), 15, FastMath.random(), FastMath.random(), FastMath.random(), 0.1);
 	}
 	
 	@Override
@@ -507,9 +509,9 @@ public class LavaDisc extends LavaAbility implements AddonAbility {
 
 		void render(Location location, boolean largeLava) {
 			if (largeLava)
-				ParticleEffect.LAVA.display(location, particles * 2, Math.random(), Math.random(), Math.random(), 0.1);
+				ParticleEffect.LAVA.display(location, particles * 2, FastMath.random(), FastMath.random(), FastMath.random(), 0.1);
 			else
-				ParticleEffect.LAVA.display(location, 1, Math.random(), Math.random(), Math.random(), 0.1);
+				ParticleEffect.LAVA.display(location, 1, FastMath.random(), FastMath.random(), FastMath.random(), 0.1);
 
 			angle += 1;
 			if (angle > 360)
@@ -544,7 +546,7 @@ public class LavaDisc extends LavaAbility implements AddonAbility {
 						new RegenTempBlock(l.getBlock(), Material.AIR, Material.AIR.createBlockData(), regenTime);
 					}
 
-					ParticleEffect.LAVA.display(l, particles * 2, Math.random(), Math.random(), Math.random(), 0.2);
+					ParticleEffect.LAVA.display(l, particles * 2, FastMath.random(), FastMath.random(), FastMath.random(), 0.2);
 				}
 			}
 		}

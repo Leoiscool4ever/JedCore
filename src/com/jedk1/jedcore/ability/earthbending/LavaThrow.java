@@ -11,6 +11,8 @@ import com.projectkorra.projectkorra.command.Commands;
 import com.projectkorra.projectkorra.util.DamageHandler;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -65,7 +67,7 @@ public class LavaThrow extends LavaAbility implements AddonAbility {
 		location.setPitch(0);
 		location = location.toVector().add(location.getDirection().multiply(sourceRange)).toLocation(location.getWorld());
 
-		sourceRange = Math.round(sourceRange / 2F);
+		sourceRange = FastMath.round(sourceRange / 2F);
 
 		if (prepare()) {
 			start();
@@ -167,7 +169,7 @@ public class LavaThrow extends LavaAbility implements AddonAbility {
 
 			head = head.add(head.getDirection().multiply(1));
 			new RegenTempBlock(l.getBlock(), Material.LAVA, Material.LAVA.createBlockData(bd -> ((Levelled)bd).setLevel(0)), 200);
-			ParticleEffect.LAVA.display(head, 1, Math.random(), Math.random(), Math.random(), 0);
+			ParticleEffect.LAVA.display(head, 1, FastMath.random(), FastMath.random(), FastMath.random(), 0);
 
 			boolean hit = false;
 

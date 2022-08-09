@@ -28,6 +28,9 @@ import com.projectkorra.projectkorra.ability.BlueFireAbility;
 import com.projectkorra.projectkorra.ability.FireAbility;
 import com.projectkorra.projectkorra.util.DamageHandler;
 import com.projectkorra.projectkorra.util.ParticleEffect;
+
+import net.jafama.FastMath;
+
 import org.bukkit.util.Vector;
 
 public class FireShots extends FireAbility implements AddonAbility {
@@ -142,7 +145,7 @@ public class FireShots extends FireAbility implements AddonAbility {
 
 				boolean hit = CollisionDetector.checkEntityCollisions(player, collider, (entity) -> {
 					DamageHandler.damageEntity(entity, damage, ability);
-					FireTick.set(entity, Math.round(fireTicks / 50F));
+					FireTick.set(entity, FastMath.round(fireTicks / 50F));
 					new FireDamageTimer(entity, player);
 					return true;
 				});

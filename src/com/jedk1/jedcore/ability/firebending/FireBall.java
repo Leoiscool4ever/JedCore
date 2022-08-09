@@ -27,6 +27,8 @@ import com.projectkorra.projectkorra.firebending.util.FireDamageTimer;
 import com.projectkorra.projectkorra.util.DamageHandler;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
+import net.jafama.FastMath;
+
 public class FireBall extends FireAbility implements AddonAbility {
 
 	private Location location;
@@ -153,7 +155,7 @@ public class FireBall extends FireAbility implements AddonAbility {
 		distanceTravelled = range;
 		DamageHandler.damageEntity(entity, damage, this);
 
-		FireTick.set(entity, Math.round(fireTicks / 50F));
+		FireTick.set(entity, FastMath.round(fireTicks / 50F));
 		new FireDamageTimer(entity, player);
 		return false;
 	}

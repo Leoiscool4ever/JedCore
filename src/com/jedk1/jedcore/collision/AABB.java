@@ -5,6 +5,8 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
 
+import net.jafama.FastMath;
+
 import java.util.Optional;
 
 public class AABB implements Collider {
@@ -108,8 +110,8 @@ public class AABB implements Collider {
         double t5 = (min.getZ() - ray.origin.getZ()) * ray.directionReciprocal.getZ();
         double t6 = (max.getZ() - ray.origin.getZ()) * ray.directionReciprocal.getZ();
 
-        double tmin = Math.max(Math.max(Math.min(t1, t2), Math.min(t3, t4)), Math.min(t5, t6));
-        double tmax = Math.min(Math.min(Math.max(t1, t2), Math.max(t3, t4)), Math.max(t5, t6));
+        double tmin = FastMath.max(FastMath.max(FastMath.min(t1, t2), FastMath.min(t3, t4)), FastMath.min(t5, t6));
+        double tmax = FastMath.min(FastMath.min(FastMath.max(t1, t2), FastMath.max(t3, t4)), FastMath.max(t5, t6));
 
         if (tmax < 0 || tmin > tmax) {
             return Optional.empty();
@@ -146,7 +148,7 @@ public class AABB implements Collider {
     public Vector getHalfExtents() {
         Vector half = max.clone().subtract(min).multiply(0.5);
         // Return a vector of half extents that reach from mid to box sides.
-        return new Vector(Math.abs(half.getX()), Math.abs(half.getY()), Math.abs(half.getZ()));
+        return new Vector(FastMath.abs(half.getX()), FastMath.abs(half.getY()), FastMath.abs(half.getZ()));
     }
 
     private Vector min(Entity entity) {

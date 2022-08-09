@@ -20,6 +20,9 @@ import com.projectkorra.projectkorra.waterbending.WaterSpout;
 
 import com.projectkorra.projectkorra.waterbending.plant.PlantRegrowth;
 import com.projectkorra.projectkorra.waterbending.util.WaterReturn;
+
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -101,7 +104,7 @@ public class WaterFlow extends WaterAbility implements AddonAbility, ComboAbilit
 			prevHealth = player.getHealth();
 			time = System.currentTimeMillis();
 
-			int augment = (int) Math.round(getNightFactor(player.getWorld()));
+			int augment = (int) FastMath.round(getNightFactor(player.getWorld()));
 			if (isFullMoon(player.getWorld()) && fullMoonEnabled && sourceBlock != null) {
 				List<Block> sources = getNearbySources(sourceBlock, 3);
 				if (sources.size() > 9) {

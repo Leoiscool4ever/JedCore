@@ -7,10 +7,11 @@ import java.util.List;
 import com.jedk1.jedcore.configuration.JedCoreConfig;
 import com.projectkorra.projectkorra.command.Commands;
 import com.projectkorra.projectkorra.waterbending.ice.PhaseChange;
-import org.bukkit.Color;
+
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.Particle;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.ConfigurationSection;
@@ -47,11 +48,9 @@ public class FrostBreath extends IceAbility implements AddonAbility {
 		Biome.SOUL_SAND_VALLEY,
 		Biome.WARPED_FOREST,
 		Biome.BADLANDS,
-		Biome.WOODED_BADLANDS,
 		Biome.ERODED_BADLANDS,
 		Biome.SAVANNA,
-		Biome.SAVANNA_PLATEAU,
-		Biome.WINDSWEPT_SAVANNA
+		Biome.SAVANNA_PLATEAU
 	);
 
 	public Config config;
@@ -290,14 +289,14 @@ public class FrostBreath extends IceAbility implements AddonAbility {
 					freezeGround(loc);
 				}
 
-				ParticleEffect.SNOW_SHOVEL.display(loc, config.particles, Math.random(), Math.random(), Math.random(), size);
+				ParticleEffect.SNOW_SHOVEL.display(loc, config.particles, FastMath.random(), FastMath.random(), FastMath.random(), size);
 				ParticleEffect.SPELL_MOB.display(getOffsetLocation(loc, offset), 0, 220, 220, 220, 0.003/*, new Particle.DustOptions(Color.fromRGB(220, 220, 220), 1)*/);
 				ParticleEffect.SPELL_MOB.display(getOffsetLocation(loc, offset), 0, 150, 150, 255, 0.0035/*, new Particle.DustOptions(Color.fromRGB(150, 150, 255), 1)*/);
 			}
 		}
 
 		private Location getOffsetLocation(Location loc, double offset) {
-			return loc.clone().add((float) ((Math.random() - 0.5) * offset), (float) ((Math.random() - 0.5) * offset), (float) ((Math.random() - 0.5) * offset));
+			return loc.clone().add((float) ((FastMath.random() - 0.5) * offset), (float) ((FastMath.random() - 0.5) * offset), (float) ((FastMath.random() - 0.5) * offset));
 		}
 
 		private void freezeGround(Location loc) {

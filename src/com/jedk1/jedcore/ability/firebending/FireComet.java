@@ -14,6 +14,8 @@ import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.util.DamageHandler;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -217,8 +219,8 @@ public class FireComet extends FireAbility implements AddonAbility {
 			}
 		}
 
-		playFirebendingParticles(location, 20, Math.random(), Math.random(), Math.random());
-		ParticleEffect.FIREWORKS_SPARK.display(location, 20,  Math.random(), Math.random(), Math.random(), 0.5);
+		playFirebendingParticles(location, 20, FastMath.random(), FastMath.random(), FastMath.random());
+		ParticleEffect.FIREWORKS_SPARK.display(location, 20,  FastMath.random(), FastMath.random(), FastMath.random(), 0.5);
 
 		location.getWorld().playSound(location, (rand.nextBoolean()) ? Sound.ENTITY_FIREWORK_ROCKET_BLAST : Sound.ENTITY_FIREWORK_ROCKET_BLAST_FAR, 5F, 1F);
 		location.getWorld().playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 5F, 0.8F);
@@ -243,15 +245,15 @@ public class FireComet extends FireAbility implements AddonAbility {
 		this.angle += 10;
 
 		Location location = this.location.clone();
-		double angle = (this.angle * Math.PI / 180);
+		double angle = (this.angle * FastMath.PI / 180);
 		double xRotation = 3.141592653589793D / 3 * 2.1;
-		Vector v = new Vector(Math.cos(angle + point), Math.sin(angle), 0.0D).multiply(2.2);
+		Vector v = new Vector(FastMath.cos(angle + point), FastMath.sin(angle), 0.0D).multiply(2.2);
 		Vector v1 = v.clone();
 
 		rotateAroundAxisX(v, xRotation);
-		rotateAroundAxisY(v, -((location.getYaw() * Math.PI / 180) - 1.575));
+		rotateAroundAxisY(v, -((location.getYaw() * FastMath.PI / 180) - 1.575));
 		rotateAroundAxisX(v1, -xRotation);
-		rotateAroundAxisY(v1, -((location.getYaw() * Math.PI / 180) - 1.575));
+		rotateAroundAxisY(v1, -((location.getYaw() * FastMath.PI / 180) - 1.575));
 
 //		if (bPlayer.canUseSubElement(SubElement.BLUE_FIRE)) {
 //			ParticleEffect.SOUL_FIRE_FLAME.display(location.clone().add(v), 1, 0, 0, 0, 0.02);
@@ -287,7 +289,7 @@ public class FireComet extends FireAbility implements AddonAbility {
 		}
 
 		if (size == 1.5) {
-			ParticleEffect.EXPLOSION_LARGE.display(this.location, 3, Math.random(), Math.random(), Math.random(), 0.03);
+			ParticleEffect.EXPLOSION_LARGE.display(this.location, 3, FastMath.random(), FastMath.random(), FastMath.random(), 0.03);
 		}
 	}
 
@@ -307,15 +309,15 @@ public class FireComet extends FireAbility implements AddonAbility {
 
 		Location location = this.location.clone();
 		for (int i = -180; i < 180; i += 45) {
-			double angle = (i * Math.PI / 180);
+			double angle = (i * FastMath.PI / 180);
 			double xRotation = 3.141592653589793D / 3 * 2.1;
-			Vector v = new Vector(Math.cos(angle + point), Math.sin(angle + point), 0.0D).multiply(2.2);
+			Vector v = new Vector(FastMath.cos(angle + point), FastMath.sin(angle + point), 0.0D).multiply(2.2);
 			Vector v1 = v.clone();
 
 			rotateAroundAxisX(v, xRotation);
-			rotateAroundAxisY(v, -((location.getYaw() * Math.PI / 180) - 1.575));
+			rotateAroundAxisY(v, -((location.getYaw() * FastMath.PI / 180) - 1.575));
 			rotateAroundAxisX(v1, -xRotation);
-			rotateAroundAxisY(v1, -((location.getYaw() * Math.PI / 180) - 1.575));
+			rotateAroundAxisY(v1, -((location.getYaw() * FastMath.PI / 180) - 1.575));
 
 //			if (bPlayer.canUseSubElement(SubElement.BLUE_FIRE)) {
 //				ParticleEffect.SOUL_FIRE_FLAME.display(location.clone().add(v), 1, 0, 0, 0, 0.02);
@@ -338,8 +340,8 @@ public class FireComet extends FireAbility implements AddonAbility {
 	}
 
 	private void rotateAroundAxisX(Vector v, double angle) {
-		double cos = Math.cos(angle);
-		double sin = Math.sin(angle);
+		double cos = FastMath.cos(angle);
+		double sin = FastMath.sin(angle);
 		double y = v.getY() * cos - v.getZ() * sin;
 		double z = v.getY() * sin + v.getZ() * cos;
 
@@ -347,8 +349,8 @@ public class FireComet extends FireAbility implements AddonAbility {
 	}
 
 	private void rotateAroundAxisY(Vector v, double angle) {
-		double cos = Math.cos(angle);
-		double sin = Math.sin(angle);
+		double cos = FastMath.cos(angle);
+		double sin = FastMath.sin(angle);
 		double x = v.getX() * cos + v.getZ() * sin;
 		double z = v.getX() * -sin + v.getZ() * cos;
 

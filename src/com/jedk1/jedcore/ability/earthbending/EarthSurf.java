@@ -13,6 +13,8 @@ import com.projectkorra.projectkorra.attribute.Attribute;
 import com.projectkorra.projectkorra.earthbending.passive.DensityShift;
 import com.projectkorra.projectkorra.util.TempBlock;
 
+import net.jafama.FastMath;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -92,7 +94,7 @@ public class EarthSurf extends EarthAbility implements AddonAbility {
 		springStiffness = config.getDouble("Abilities.Earth.EarthSurf.SpringStiffness");
 
 		int smootherSize = config.getInt("Abilities.Earth.EarthSurf.HeightTolerance");
-		this.heightSmoother = new DoubleSmoother(Math.max(smootherSize, 1));
+		this.heightSmoother = new DoubleSmoother(FastMath.max(smootherSize, 1));
 
 		if (config.getBoolean("Abilities.Earth.EarthSurf.RelaxedCollisions")) {
 			this.collisionDetector = new RelaxedCollisionDetector();
@@ -153,9 +155,9 @@ public class EarthSurf extends EarthAbility implements AddonAbility {
 		double force = -springStiffness * displacement;
 
 		double maxForce = 0.5;
-		if (Math.abs(force) > maxForce) {
+		if (FastMath.abs(force) > maxForce) {
 			// Cap the force to maxForce so the player isn't instantly pulled to the ground.
-			force = force / Math.abs(force) * maxForce;
+			force = force / FastMath.abs(force) * maxForce;
 		}
 
 		Vector velocity = direction.clone().multiply(speed).setY(force);
@@ -269,8 +271,8 @@ public class EarthSurf extends EarthAbility implements AddonAbility {
 			long scaledCooldown = cooldown;
 
 			if (durationEnabled && duration > 0) {
-				double t = Math.min((System.currentTimeMillis() - this.getStartTime()) / (double) duration, 1.0);
-				scaledCooldown = Math.max((long) (cooldown * t), minimumCooldown);
+				double t = FastMath.min((System.currentTimeMillis() - this.getStartTime()) / (double) duration, 1.0);
+				scaledCooldown = FastMath.max((long) (cooldown * t), minimumCooldown);
 			}
 
 			bPlayer.addCooldown(this, scaledCooldown);
@@ -450,7 +452,7 @@ public class EarthSurf extends EarthAbility implements AddonAbility {
 			Vector direction = front.getDirection().clone().setY(0).normalize();
 			double playerSpeed = player.getVelocity().clone().setY(0).length();
 
-			front.add(direction.clone().multiply(Math.max(speed, playerSpeed)));
+			front.add(direction.clone().multiply(FastMath.max(speed, playerSpeed)));
 
 			for (int i = 0; i < 3; ++i) {
 				Location location = front.clone().add(0, -i, 0);
@@ -473,7 +475,7 @@ public class EarthSurf extends EarthAbility implements AddonAbility {
 			Vector direction = front.getDirection().clone().setY(0).normalize();
 			double playerSpeed = player.getVelocity().clone().setY(0).length();
 
-			front.add(direction.clone().multiply(Math.max(speed, playerSpeed)));
+			front.add(direction.clone().multiply(FastMath.max(speed, playerSpeed)));
 
 			return isCollision(front);
 		}

@@ -42,11 +42,9 @@ public class Drain extends WaterAbility implements AddonAbility {
 			Biome.SOUL_SAND_VALLEY,
 			Biome.WARPED_FOREST,
 			Biome.BADLANDS,
-			Biome.WOODED_BADLANDS,
 			Biome.ERODED_BADLANDS,
 			Biome.SAVANNA,
 			Biome.SAVANNA_PLATEAU,
-			Biome.WINDSWEPT_SAVANNA
 	};
 
 	private long regenDelay;
